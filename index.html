@@ -71,6 +71,10 @@
         h2 {
             color: #2e86c1;
         }
+        .property-summary th {
+            text-align: left;
+            padding-right: 10px;
+        }
         /* Modal styles */
         .modal {
             display: none;
@@ -163,31 +167,31 @@
         <h2>Property Summary</h2>
         <table>
             <tr>
-                <th>Property Type</th>
+                <th>Property Type:</th>
                 <td>Single Family</td>
             </tr>
             <tr>
-                <th>Building Type</th>
+                <th>Building Type:</th>
                 <td>House</td>
             </tr>
             <tr>
-                <th>Storeys</th>
+                <th>Storeys:</th>
                 <td>1</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Title:</th>
                 <td>Freehold</td>
             </tr>
             <tr>
-                <th>Land Size</th>
+                <th>Land Size:</th>
                 <td>80x224.52</td>
             </tr>
             <tr>
-                <th>Built in</th>
+                <th>Built in:</th>
                 <td>2015</td>
             </tr>
             <tr>
-                <th>Parking Type</th>
+                <th>Parking Type:</th>
                 <td>Attached Garage, Garage</td>
             </tr>
         </table>
@@ -219,6 +223,22 @@
         </ul>
     </div>
 
+    <!-- Broker Information and Contact Section -->
+    <div class="contact-section">
+        <div class="contact-info">
+            <img src="images/big-bubba.jpg" alt="Big Bubba's Picture" style="width: 60px; height: 60px; border-radius: 50%;">
+            <div>
+                <strong>Big Bubba</strong><br>
+                Broker<br>
+                <a href="tel:519-BIG-BUBA">519-BIG-BUBA</a>
+            </div>
+        </div>
+        <div class="contact-buttons">
+            <button>Email</button>
+            <button>Book Showing</button>
+        </div>
+    </div>
+
     <!-- Modal Structure -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -231,26 +251,4 @@
 
 <!-- JavaScript for modal functionality -->
 <script>
-    let currentImageIndex = 0;
-    const images = [
-        "images/main.jpg",
-        "images/pic1.jpg",
-        "images/pic2.jpg",
-        "images/pic3.jpg",
-        "images/pic4.jpg",
-        "images/pic5.jpg"
-    ];
-
-    function openModal(index) {
-        currentImageIndex = index;
-        document.getElementById("imageModal").style.display = "block";
-        document.getElementById("modalImage").src = images[currentImageIndex];
-    }
-
-    function closeModal() {
-        document.getElementById("imageModal").style.display = "none";
-    }
-
-    function prevImage() {
-        currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
-        document.getElementBy
+    let currentImage
