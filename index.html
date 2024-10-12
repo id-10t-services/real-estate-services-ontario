@@ -23,35 +23,24 @@
         }
         .property-info {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: flex-start;
+        }
+        .main-image, .image-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
         }
         .main-image {
             width: 60%;
             margin-right: 20px;
         }
-        .main-image img {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-        }
         .image-gallery {
             width: 35%;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-        .image-gallery img {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            cursor: pointer;
-        }
         .property-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 20px 0;
             border-top: 2px solid #ddd;
         }
@@ -59,39 +48,11 @@
             font-size: 32px;
             color: #2e86c1;
         }
-        .details {
-            display: flex;
-            align-items: center;
-        }
-        .details div {
-            margin-right: 30px;
-        }
         .contact-section {
             border-top: 2px solid #ddd;
             padding-top: 20px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-        .contact-section .contact-info {
-            display: flex;
-            align-items: center;
-        }
-        .contact-section .contact-info div {
-            margin-left: 20px;
-        }
-        .contact-buttons {
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-buttons button {
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #2e86c1;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
         }
         .listing-description, .property-summary, .property-details-section {
             margin-bottom: 20px;
@@ -99,20 +60,9 @@
         h2 {
             color: #2e86c1;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             z-index: 999;
             padding-top: 50px;
@@ -120,26 +70,40 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0, 0, 0, 0.9);
         }
         .modal-content {
             margin: auto;
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 1200px;
         }
         .modal-content img {
             width: 100%;
         }
         .close {
             position: absolute;
-            top: 30px;
+            top: 20px;
             right: 30px;
             color: white;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+        }
+        /* Buttons for next/previous image */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-size: 60px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .prev {
+            left: 20px;
+        }
+        .next {
+            right: 20px;
         }
         .modal img:hover {
             cursor: pointer;
@@ -157,15 +121,23 @@
     <!-- Property Images -->
     <div class="property-info">
         <div class="main-image">
-            <img src="images/main.jpg" alt="Main Home Image" onclick="openModal('images/main.jpg')">
+            <img src="images/main.jpg" alt="Main Home Image" onclick="openModal(0)">
         </div>
         <div class="image-gallery">
-            <img src="images/pic1.jpg" alt="Home Picture 1" onclick="openModal('images/pic1.jpg')">
-            <img src="images/pic2.jpg" alt="Home Picture 2" onclick="openModal('images/pic2.jpg')">
-            <img src="images/pic3.jpg" alt="Home Picture 3" onclick="openModal('images/pic3.jpg')">
-            <img src="images/pic4.jpg" alt="Home Picture 4" onclick="openModal('images/pic4.jpg')">
-            <img src="images/pic5.jpg" alt="Home Picture 5" onclick="openModal('images/pic5.jpg')">
+            <img src="images/pic1.jpg" alt="Home Picture 1" onclick="openModal(1)">
+            <img src="images/pic2.jpg" alt="Home Picture 2" onclick="openModal(2)">
+            <img src="images/pic3.jpg" alt="Home Picture 3" onclick="openModal(3)">
+            <img src="images/pic4.jpg" alt="Home Picture 4" onclick="openModal(4)">
+            <img src="images/pic5.jpg" alt="Home Picture 5" onclick="openModal(5)">
         </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="prev" onclick="prevImage()">&#10094;</span>
+        <span class="next" onclick="nextImage()">&#10095;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <!-- Listing Description -->
@@ -182,84 +154,47 @@
         <p>This place is priced to sell quickly!</p>
     </section>
 
-    <!-- Property Summary -->
-    <section class="property-summary">
-        <h2>Property Summary</h2>
-        <table>
-            <tr>
-                <th>Property Type</th>
-                <td>Single Family</td>
-            </tr>
-            <tr>
-                <th>Building Type</th>
-                <td>House</td>
-            </tr>
-            <tr>
-                <th>Storeys</th>
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>Freehold</td>
-            </tr>
-            <tr>
-                <th>Land Size</th>
-                <td>80x224.52</td>
-            </tr>
-            <tr>
-                <th>Built in</th>
-                <td>2015</td>
-            </tr>
-            <tr>
-                <th>Parking Type</th>
-                <td>Attached Garage, Garage</td>
-            </tr>
-        </table>
-    </section>
+</div>
 
-    <!-- Property Price and Details -->
-    <div class="property-details">
-        <div class="price">$1,199,000</div>
-        <div class="details">
-            <div>
-                <strong>5 Bedrooms</strong>
-            </div>
-            <div>
-                <strong>4 Bathrooms</strong>
-            </div>
-            <div>
-                <strong>3,200 Sq Ft</strong>
-            </div>
-        </div>
-    </div>
+<!-- JavaScript for modal functionality -->
+<script>
+    let currentImageIndex = 0;
+    const images = [
+        "images/main.jpg",
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg",
+        "images/pic5.jpg"
+    ];
 
-    <!-- Property Details Section -->
-    <section class="property-details-section">
-        <h2>Property Details</h2>
-        <p>
-            This home offers 5 bedrooms and 4 bathrooms, including a finished basement with a family room, home gym, and in-floor heating. 
-            The large lot includes an attached garage and a detached 22x32 workshop. Located minutes from Lake Huron’s Pinery, this home is perfect for lakeside living and outdoor enthusiasts.
-        </p>
+    function openModal(index) {
+        currentImageIndex = index;
+        document.getElementById("imageModal").style.display = "block";
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
 
-        <h3>Inclusions</h3>
-        <ul>
-            <li>Refrigerator</li>
-            <li>Dishwasher</li>
-            <li>Washer and Dryer</li>
-            <li>Wine Fridge</li>
-            <li>Window Coverings</li>
-            <li>Whatever carrots are left in the garden</li>
-        </ul>
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
 
-        <h3>Exclusions</h3>
-        <ul>
-            <li>Dining Room Chandelier</li>
-            <li>Outdoor Playset</li>
-            <li>My money</li>
-        </ul>
-    </section>
+    function prevImage() {
+        currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
 
-    <!-- Broker Information and Contact Buttons -->
-    <div class="contact-section">
-        <div class="contact-info">
-            <img src="images/big-bubba.jpg" alt="Big Bubba's Picture" style="width: 60px; height: 60px
+    function nextImage() {
+        currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
+
+    // Close modal if clicked outside image
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('imageModal')) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
