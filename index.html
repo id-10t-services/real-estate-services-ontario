@@ -123,6 +123,20 @@
         .modal img:hover {
             cursor: pointer;
         }
+        /* New sections styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .section-header {
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -197,7 +211,7 @@
         </table>
     </section>
 
-    <!-- Property Price and Details -->
+    <!-- Property Details -->
     <div class="property-details">
         <h2>Property Details</h2>
         <p>
@@ -223,37 +237,33 @@
         </ul>
     </div>
 
-    <!-- Broker Information and Contact Section -->
-    <div class="contact-section">
-        <div class="contact-info">
-            <img src="images/big-bubba.jpg" alt="Big Bubba's Picture" style="width: 60px; height: 60px; border-radius: 50%;">
-            <div>
-                <strong>Big Bubba</strong><br>
-                Broker<br>
-                <a href="tel:519-BIG-BUBA">519-BIG-BUBA</a>
-            </div>
-        </div>
-        <div class="contact-buttons">
-            <button>Email</button>
-            <button>Book Showing</button>
-        </div>
-    </div>
-
-    <!-- Modal Structure -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <span class="prev" onclick="prevImage()">&#10094;</span>
-        <span class="next" onclick="nextImage()">&#10095;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-</div>
-
-<!-- JavaScript for modal functionality -->
-<script>
-    let currentImageIndex = 0;
-    const images = [
-        "images/main.jpg",
-        "images/pic1.jpg",
-        "images/pic2.jpg",
-        "images/p
+    <!-- Building Section -->
+    <section class="section-header">
+        <h2>Building</h2>
+        <table>
+            <tr>
+                <th>Bedrooms</th>
+                <td>Above Grade: 3</td>
+                <td>Below Grade: 2</td>
+            </tr>
+            <tr>
+                <th>Bathrooms</th>
+                <td>Total: 4</td>
+            </tr>
+            <tr>
+                <th>Appliances Included</th>
+                <td>Dishwasher, Dryer, Refrigerator, Stove, Washer</td>
+            </tr>
+            <tr>
+                <th>Flooring</th>
+                <td>Carpeted, Hardwood</td>
+            </tr>
+            <tr>
+                <th>Heating Type</th>
+                <td>Forced air (Natural gas)</td>
+            </tr>
+            <tr>
+                <th>Fireplace Fuel</th>
+                <td>Electric (Insert)</td>
+            </tr>
+           
