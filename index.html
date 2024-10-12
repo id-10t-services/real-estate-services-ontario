@@ -27,20 +27,88 @@
             justify-content: space-between;
             align-items: flex-start;
         }
-        .main-image, .image-gallery img {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-        }
         .main-image {
             width: 60%;
             margin-right: 20px;
         }
+        .main-image img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+        }
         .image-gallery {
             width: 35%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 10px;
+        }
+        .image-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .property-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-top: 2px solid #ddd;
+        }
+        .price {
+            font-size: 32px;
+            color: #2e86c1;
+        }
+        .details {
+            display: flex;
+            align-items: center;
+        }
+        .details div {
+            margin-right: 30px;
+        }
+        .contact-section {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contact-section .contact-info {
+            display: flex;
+            align-items: center;
+        }
+        .contact-section .contact-info div {
+            margin-left: 20px;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-buttons button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #2e86c1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .listing-description, .property-summary, .property-details-section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #2e86c1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
         }
         /* Modal styles */
         .modal {
@@ -100,42 +168,98 @@
         </div>
     </div>
 
-    <!-- Listing Description, Property Summary, and Other sections... -->
-    <!-- (You can keep the rest of your content as is) -->
+    <!-- Listing Description -->
+    <section class="listing-description">
+        <h2>Listing Description</h2>
+        <p>
+            Exceptional custom-built home with stunning design and thoughtful details throughout. Located beside the serene Lake Huron’s Pinery, this 5-bedroom, 4-bathroom home is perfect for lakeside living. 
+            Spanning over 3,200 square feet, the main floor features 3 spacious bedrooms, 2 bathrooms, and an airy, open-concept layout illuminated by abundant natural light.
+        </p>
+        <p>
+            The expansive kitchen includes luxurious quartz countertops, a large island, a wine fridge, and ample storage. The primary bedroom offers a walk-in closet and a spa-inspired ensuite with a custom glass shower. 
+            Outside, enjoy your landscaped backyard oasis with views of the lake, a covered patio, and a 22x32 detached garage, ideal for any project.
+        </p>
+        <p>This place is priced to sell quickly!</p>
+    </section>
 
-    <!-- Modal Structure -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
+    <!-- Property Summary -->
+    <section class="property-summary">
+        <h2>Property Summary</h2>
+        <table>
+            <tr>
+                <th>Property Type</th>
+                <td>Single Family</td>
+            </tr>
+            <tr>
+                <th>Building Type</th>
+                <td>House</td>
+            </tr>
+            <tr>
+                <th>Storeys</th>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>Freehold</td>
+            </tr>
+            <tr>
+                <th>Land Size</th>
+                <td>80x224.52</td>
+            </tr>
+            <tr>
+                <th>Built in</th>
+                <td>2015</td>
+            </tr>
+            <tr>
+                <th>Parking Type</th>
+                <td>Attached Garage, Garage</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Property Price and Details -->
+    <div class="property-details">
+        <div class="price">$1,199,000</div>
+        <div class="details">
+            <div>
+                <strong>5 Bedrooms</strong>
+            </div>
+            <div>
+                <strong>4 Bathrooms</strong>
+            </div>
+            <div>
+                <strong>3,200 Sq Ft</strong>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="footer">
-    <p>&copy; 2024 Big Bubba on the Lake. All Rights Reserved.</p>
-</div>
+    <!-- Property Details Section -->
+    <section class="property-details-section">
+        <h2>Property Details</h2>
+        <p>
+            This home offers 5 bedrooms and 4 bathrooms, including a finished basement with a family room, home gym, and in-floor heating. 
+            The large lot includes an attached garage and a detached 22x32 workshop. Located minutes from Lake Huron’s Pinery, this home is perfect for lakeside living and outdoor enthusiasts.
+        </p>
 
-<!-- JavaScript for modal functionality -->
-<script>
-    function openModal(imageSrc) {
-        var modal = document.getElementById('imageModal');
-        var modalImage = document.getElementById('modalImage');
-        modal.style.display = "block";
-        modalImage.src = imageSrc;
-    }
+        <h3>Inclusions</h3>
+        <ul>
+            <li>Refrigerator</li>
+            <li>Dishwasher</li>
+            <li>Washer and Dryer</li>
+            <li>Wine Fridge</li>
+            <li>Window Coverings</li>
+            <li>Whatever carrots are left in the garden</li>
+        </ul>
 
-    function closeModal() {
-        var modal = document.getElementById('imageModal');
-        modal.style.display = "none";
-    }
+        <h3>Exclusions</h3>
+        <ul>
+            <li>Dining Room Chandelier</li>
+            <li>Outdoor Playset</li>
+            <li>My money</li>
+        </ul>
+    </section>
 
-    // Close the modal when clicking outside the image
-    window.onclick = function(event) {
-        var modal = document.getElementById('imageModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-</body>
-</html>
+    <!-- Broker Information and Contact Buttons -->
+    <div class="contact-section">
+        <div class="contact-info">
+            <img src="images/big-bubba.jpg" alt="Big Bubba's Picture" style="width: 60px; height: 60px
