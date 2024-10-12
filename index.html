@@ -48,6 +48,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+            position: relative;
         }
         .image-gallery img {
             width: 100%;
@@ -55,25 +56,17 @@
             object-fit: cover;
             cursor: pointer;
         }
-        .property-details {
-            padding: 20px 0;
-            border-top: 2px solid #ddd;
-        }
-        .contact-section {
-            border-top: 2px solid #ddd;
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .listing-description, .property-summary, .property-details-section {
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #d32f2f;
-        }
-        .property-summary th {
-            text-align: left;
-            padding-right: 10px;
+        /* "24+" Button Styling */
+        .show-more {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 8px;
         }
         /* Modal styles */
         .modal {
@@ -96,8 +89,7 @@
         .modal-content img {
             display: block;
             margin: auto;
-            width: 300%; /* Triple size */
-            max-width: none;
+            width: 300%;
         }
         .close {
             position: absolute;
@@ -121,9 +113,6 @@
         }
         .next {
             right: 20px;
-        }
-        .modal img:hover {
-            cursor: pointer;
         }
         /* New sections styling */
         table {
@@ -153,39 +142,16 @@
     <!-- Property Images -->
     <div class="property-info">
         <div class="main-image">
-            <img src="images/main.jpg" alt="Main Home Image" onclick="openModal(0)">
+            <img src="images/main.jpg" alt="Main Home Image">
         </div>
         <div class="image-gallery">
-            <img src="images/pic1.jpg" alt="Home Picture 1" onclick="openModal(1)">
-            <img src="images/pic2.jpg" alt="Home Picture 2" onclick="openModal(2)">
-            <img src="images/pic3.jpg" alt="Home Picture 3" onclick="openModal(3)">
-            <img src="images/pic4.jpg" alt="Home Picture 4" onclick="openModal(4)">
-            <img src="images/pic5.jpg" alt="Home Picture 5" onclick="openModal(5)">
-            <img src="images/pic6.jpg" alt="Home Picture 6" onclick="openModal(6)">
-            <img src="images/pic7.jpg" alt="Home Picture 7" onclick="openModal(7)">
-            <img src="images/pic8.jpg" alt="Home Picture 8" onclick="openModal(8)">
-            <img src="images/pic9.jpg" alt="Home Picture 9" onclick="openModal(9)">
-            <img src="images/pic10.jpg" alt="Home Picture 10" onclick="openModal(10)">
-            <img src="images/pic11.jpg" alt="Home Picture 11" onclick="openModal(11)">
-            <img src="images/pic12.jpg" alt="Home Picture 12" onclick="openModal(12)">
-            <img src="images/pic13.jpg" alt="Home Picture 13" onclick="openModal(13)">
-            <img src="images/pic14.jpg" alt="Home Picture 14" onclick="openModal(14)">
-            <img src="images/pic15.jpg" alt="Home Picture 15" onclick="openModal(15)">
-            <img src="images/pic16.jpg" alt="Home Picture 16" onclick="openModal(16)">
-            <img src="images/pic17.jpg" alt="Home Picture 17" onclick="openModal(17)">
-            <img src="images/pic18.jpg" alt="Home Picture 18" onclick="openModal(18)">
-            <img src="images/pic19.jpg" alt="Home Picture 19" onclick="openModal(19)">
-            <img src="images/pic20.jpg" alt="Home Picture 20" onclick="openModal(20)">
-            <img src="images/pic21.jpg" alt="Home Picture 21" onclick="openModal(21)">
-            <img src="images/pic22.jpg" alt="Home Picture 22" onclick="openModal(22)">
-            <img src="images/pic23.jpg" alt="Home Picture 23" onclick="openModal(23)">
-            <img src="images/pic24.jpg" alt="Home Picture 24" onclick="openModal(24)">
-            <img src="images/pic25.jpg" alt="Home Picture 25" onclick="openModal(25)">
-            <img src="images/pic26.jpg" alt="Home Picture 26" onclick="openModal(26)">
-            <img src="images/pic27.jpg" alt="Home Picture 27" onclick="openModal(27)">
-            <img src="images/pic28.jpg" alt="Home Picture 28" onclick="openModal(28)">
-            <img src="images/pic29.jpg" alt="Home Picture 29" onclick="openModal(29)">
-            <img src="images/pic30.jpg" alt="Home Picture 30" onclick="openModal(30)">
+            <img src="images/pic1.jpg" alt="Home Picture 1" onclick="openModal(0)">
+            <img src="images/pic2.jpg" alt="Home Picture 2" onclick="openModal(1)">
+            <img src="images/pic3.jpg" alt="Home Picture 3" onclick="openModal(2)">
+            <img src="images/pic4.jpg" alt="Home Picture 4" onclick="openModal(3)">
+            <img src="images/pic5.jpg" alt="Home Picture 5" onclick="openModal(4)">
+            <img src="images/pic6.jpg" alt="Home Picture 6" onclick="openModal(5)">
+            <div class="show-more" onclick="openAllImages()">+24</div>
         </div>
     </div>
 
@@ -200,9 +166,7 @@
             The expansive kitchen includes luxurious quartz countertops, a large island, a wine fridge, and ample storage. The primary bedroom offers a walk-in closet and a spa-inspired ensuite with a custom glass shower. 
             Outside, enjoy your landscaped backyard oasis with views of the lake, a covered patio, a saltwater heated infinity pool, and a 22x32 detached garage, ideal for any project.
         </p>
-        <p>
-            This place is priced to sell quickly!  This stunning home is next to a psyche ward, where most of the patients have down sydrome, and often find their way into the yard frolicking about in the garden eating the gardens carrots.  They will stare into the windows at all times of the day and shout obsecnities and lick the windows.  They are harmless, but smell from urinating on each other. 
-         </p>
+        <p>This place is priced to sell quickly!</p>
     </section>
 
     <!-- Property Summary -->
@@ -397,44 +361,44 @@
 <!-- JavaScript for modal functionality -->
 <script>
     let currentImageIndex = 0;
-const images = [
-    "images/main.jpg",
-    "images/pic1.jpg",
-    "images/pic2.jpg",
-    "images/pic3.jpg",
-    "images/pic4.jpg",
-    "images/pic5.jpg",
-    "images/pic6.jpg",
-    "images/pic7.jpg",
-    "images/pic8.jpg",
-    "images/pic9.jpg",
-    "images/pic10.jpg",
-    "images/pic11.jpg",
-    "images/pic12.jpg",
-    "images/pic13.jpg",
-    "images/pic14.jpg",
-    "images/pic15.jpg",
-    "images/pic16.jpg",
-    "images/pic17.jpg",
-    "images/pic18.jpg",
-    "images/pic19.jpg",
-    "images/pic20.jpg",
-    "images/pic21.jpg",
-    "images/pic22.jpg",
-    "images/pic23.jpg",
-    "images/pic24.jpg",
-    "images/pic25.jpg",
-    "images/pic26.jpg",
-    "images/pic27.jpg",
-    "images/pic28.jpg",
-    "images/pic29.jpg",
-    "images/pic30.jpg"
-];
+    const images = [
+        "images/main.jpg",
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg",
+        "images/pic5.jpg",
+        "images/pic6.jpg",
+        "images/pic7.jpg",
+        "images/pic8.jpg",
+        "images/pic9.jpg",
+        "images/pic10.jpg",
+        "images/pic11.jpg",
+        "images/pic12.jpg",
+        "images/pic13.jpg",
+        "images/pic14.jpg",
+        "images/pic15.jpg",
+        "images/pic16.jpg",
+        "images/pic17.jpg",
+        "images/pic18.jpg",
+        "images/pic19.jpg",
+        "images/pic20.jpg",
+        "images/pic21.jpg",
+        "images/pic22.jpg",
+        "images/pic23.jpg",
+        "images/pic24.jpg",
+        "images/pic25.jpg",
+        "images/pic26.jpg",
+        "images/pic27.jpg",
+        "images/pic28.jpg",
+        "images/pic29.jpg",
+        "images/pic30.jpg"
+    ];
 
     function openModal(index) {
         currentImageIndex = index;
-        document.getElementById("imageModal").style.display = "block";
         document.getElementById("modalImage").src = images[currentImageIndex];
+        document.getElementById("imageModal").style.display = "block";
     }
 
     function closeModal() {
@@ -449,6 +413,13 @@ const images = [
     function nextImage() {
         currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
         document.getElementById("modalImage").src = images[currentImageIndex];
+    }
+
+    function openAllImages() {
+        // Display modal for all hidden images
+        let modalImage = document.getElementById('modalImage');
+        modalImage.src = images[6]; // Show the first hidden image (index 6)
+        document.getElementById('imageModal').style.display = 'block';
     }
 </script>
 
