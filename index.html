@@ -211,32 +211,6 @@
         </table>
     </section>
 
-    <!-- Property Details -->
-    <div class="property-details">
-        <h2>Property Details</h2>
-        <p>
-            This home offers 5 bedrooms and 4 bathrooms, including a finished basement with a family room, home gym, and in-floor heating. 
-            The large lot includes an attached garage and a detached 22x32 workshop. Located minutes from Lake Huron’s Pinery, this home is perfect for lakeside living and outdoor enthusiasts.
-        </p>
-
-        <h3>Inclusions</h3>
-        <ul>
-            <li>Refrigerator</li>
-            <li>Dishwasher</li>
-            <li>Washer and Dryer</li>
-            <li>Wine Fridge</li>
-            <li>Window Coverings</li>
-            <li>Whatever carrots are left in the garden</li>
-        </ul>
-
-        <h3>Exclusions</h3>
-        <ul>
-            <li>Dining Room Chandelier</li>
-            <li>Outdoor Playset</li>
-            <li>My money</li>
-        </ul>
-    </div>
-
     <!-- Building Section -->
     <section class="section-header">
         <h2>Building</h2>
@@ -248,4 +222,146 @@
             </tr>
             <tr>
                 <th>Bathrooms</th>
-                <td>Total: 4</td
+                <td>Total: 4</td>
+            </tr>
+            <tr>
+                <th>Appliances Included</th>
+                <td>Dishwasher, Dryer, Refrigerator, Stove, Washer</td>
+            </tr>
+            <tr>
+                <th>Flooring</th>
+                <td>Carpeted, Hardwood</td>
+            </tr>
+            <tr>
+                <th>Heating Type</th>
+                <td>Forced Air (Natural Gas)</td>
+            </tr>
+            <tr>
+                <th>Fireplace Fuel</th>
+                <td>Natural Gas</td>
+            </tr>
+            <tr>
+                <th>Architecture Style</th>
+                <td>Bungalow</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="section-header">
+        <h2>Rooms</h2>
+        <table>
+            <tr>
+                <th>Main Level</th>
+                <td>Living Room</td>
+                <td>12x16</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Dining Room</td>
+                <td>10x14</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Kitchen</td>
+                <td>11x12</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Primary Bedroom</td>
+                <td>16x13</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Bedroom 2</td>
+                <td>12x10</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Bedroom 3</td>
+                <td>12x10</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Land Section -->
+    <section class="section-header">
+        <h2>Land</h2>
+        <table>
+            <tr>
+                <th>Lot Features</th>
+                <td>Landscaped</td>
+            </tr>
+            <tr>
+                <th>Zoning Description</th>
+                <td>RL1</td>
+            </tr>
+            <tr>
+                <th>Waterfront Features</th>
+                <td>Waterfront Nearby</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <div class="contact-info">
+            <img src="images/big-bubba.jpg" alt="Big Bubba's Picture" style="width: 60px; height: 60px; border-radius: 50%;">
+            <div>
+                <strong>Big Bubba</strong><br>
+                Broker<br>
+                <a href="tel:519-BIG-BUBA">519-BIG-BUBA</a><br>
+                <a href="mailto:bigbubba@bubbarealestate.com">Email Big Bubba</a>
+            </div>
+        </div>
+        <div class="contact-buttons">
+            <button>Email</button>
+            <button>Book Showing</button>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="prev" onclick="prevImage()">&#10094;</span>
+        <span class="next" onclick="nextImage()">&#10095;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+</div>
+
+<!-- JavaScript for modal functionality -->
+<script>
+    let currentImageIndex = 0;
+    const images = [
+        "images/main.jpg",
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg",
+        "images/pic5.jpg"
+    ];
+
+    function openModal(index) {
+        currentImageIndex = index;
+        document.getElementById("imageModal").style.display = "block";
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
+
+    function closeModal() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
+        document.getElementById("modalImage").src = images[currentImageIndex];
+    }
+</script>
+
+</body>
+</html>
