@@ -14,7 +14,15 @@
             background-color: #2e86c1;
             color: white;
             padding: 10px;
-            text-align: center;
+            text-align: left;
+            position: relative;
+        }
+        header .price {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            color: white;
         }
         .container {
             padding: 20px;
@@ -24,15 +32,16 @@
         .property-info {
             display: flex;
             justify-content: space-between;
-        }
-        .main-image, .image-gallery img {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
+            align-items: flex-start;
         }
         .main-image {
             width: 60%;
             margin-right: 20px;
+        }
+        .main-image img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
         }
         .image-gallery {
             width: 35%;
@@ -40,13 +49,15 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
+        .image-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+        }
         .property-details {
             padding: 20px 0;
             border-top: 2px solid #ddd;
-        }
-        .price {
-            font-size: 32px;
-            color: #2e86c1;
         }
         .contact-section {
             border-top: 2px solid #ddd;
@@ -115,6 +126,7 @@
 <header>
     <h1>For sale: 1 Regal Way, Near Lake Huron's Pinery</h1>
     <p>MLS® Number: 24020342</p>
+    <div class="price">$1,199,000</div>
 </header>
 
 <div class="container">
@@ -132,14 +144,6 @@
         </div>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <span class="prev" onclick="prevImage()">&#10094;</span>
-        <span class="next" onclick="nextImage()">&#10095;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
     <!-- Listing Description -->
     <section class="listing-description">
         <h2>Listing Description</h2>
@@ -153,6 +157,75 @@
         </p>
         <p>This place is priced to sell quickly!</p>
     </section>
+
+    <!-- Property Summary -->
+    <section class="property-summary">
+        <h2>Property Summary</h2>
+        <table>
+            <tr>
+                <th>Property Type</th>
+                <td>Single Family</td>
+            </tr>
+            <tr>
+                <th>Building Type</th>
+                <td>House</td>
+            </tr>
+            <tr>
+                <th>Storeys</th>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>Freehold</td>
+            </tr>
+            <tr>
+                <th>Land Size</th>
+                <td>80x224.52</td>
+            </tr>
+            <tr>
+                <th>Built in</th>
+                <td>2015</td>
+            </tr>
+            <tr>
+                <th>Parking Type</th>
+                <td>Attached Garage, Garage</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Property Price and Details -->
+    <div class="property-details">
+        <h2>Property Details</h2>
+        <p>
+            This home offers 5 bedrooms and 4 bathrooms, including a finished basement with a family room, home gym, and in-floor heating. 
+            The large lot includes an attached garage and a detached 22x32 workshop. Located minutes from Lake Huron’s Pinery, this home is perfect for lakeside living and outdoor enthusiasts.
+        </p>
+
+        <h3>Inclusions</h3>
+        <ul>
+            <li>Refrigerator</li>
+            <li>Dishwasher</li>
+            <li>Washer and Dryer</li>
+            <li>Wine Fridge</li>
+            <li>Window Coverings</li>
+            <li>Whatever carrots are left in the garden</li>
+        </ul>
+
+        <h3>Exclusions</h3>
+        <ul>
+            <li>Dining Room Chandelier</li>
+            <li>Outdoor Playset</li>
+            <li>My money</li>
+        </ul>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="prev" onclick="prevImage()">&#10094;</span>
+        <span class="next" onclick="nextImage()">&#10095;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
 </div>
 
@@ -180,21 +253,4 @@
 
     function prevImage() {
         currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
-        document.getElementById("modalImage").src = images[currentImageIndex];
-    }
-
-    function nextImage() {
-        currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
-        document.getElementById("modalImage").src = images[currentImageIndex];
-    }
-
-    // Close modal if clicked outside image
-    window.onclick = function(event) {
-        if (event.target === document.getElementById('imageModal')) {
-            closeModal();
-        }
-    }
-</script>
-
-</body>
-</html>
+        document.getElementBy
